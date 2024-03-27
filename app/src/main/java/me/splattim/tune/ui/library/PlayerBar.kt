@@ -29,7 +29,7 @@ fun PlayerBar(modifier: Modifier = Modifier) {
         modifier = modifier
     ) {
        Image(
-           painter = painterResource(id = R.drawable.album),
+           painter = painterResource(id = R.drawable.ic_launcher_background),
            contentDescription = null,
            modifier = Modifier.size(56.dp)
        )

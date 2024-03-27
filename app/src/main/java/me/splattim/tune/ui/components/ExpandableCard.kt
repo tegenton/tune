@@ -1,4 +1,4 @@
-package me.splattim.tune.ui.library
+package me.splattim.tune.ui.components
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -22,7 +22,7 @@ import me.splattim.tune.ui.theme.TuneTheme
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun InfoElement(
+fun ExpandableCard(
     @DrawableRes drawable: Int,
     @StringRes name: Int,
     modifier: Modifier = Modifier,
@@ -48,8 +48,8 @@ fun InfoElement(
 
 @Preview(showBackground = true)
 @Composable
-fun InfoElementPreview() {
+fun ExpandableCardPreview() {
     TuneTheme() {
-        InfoElement(R.drawable.album, R.string.album)
+        ExpandableCard(R.drawable.ic_launcher_background, R.string.album)
     }
 }

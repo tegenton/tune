@@ -1,7 +1,5 @@
 package me.splattim.tune.ui.library
 
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -11,10 +9,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import me.splattim.tune.R
+import me.splattim.tune.ui.components.ExpandableCard
 import me.splattim.tune.ui.theme.TuneTheme
 
 @Composable
-fun Library() {
+fun LibraryScreen() {
     Scaffold(
         topBar = {
             SearchBar()
@@ -25,7 +24,7 @@ fun Library() {
                 modifier = Modifier.padding(it)
             ) {
                 item {
-                    InfoElement(drawable = R.drawable.dg, name = R.string.dg)
+                    ExpandableCard(drawable = R.drawable.ic_launcher_foreground, name = R.string.dg)
                 }
             }
         },
@@ -39,6 +38,6 @@ fun Library() {
 @Composable
 fun LibraryPreview() {
     TuneTheme {
-        Library()
+        LibraryScreen()
     }
 }

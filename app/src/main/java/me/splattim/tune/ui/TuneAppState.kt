@@ -7,8 +7,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 
-sealed class Screen(val route: String) {
-    data object Library : Screen("library")
+enum class Screen() {
+    Library,
 }
 
 @Composable
