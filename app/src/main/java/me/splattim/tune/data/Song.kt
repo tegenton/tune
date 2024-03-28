@@ -1,3 +1,5 @@
 package me.splattim.tune.data
 
-interface SongsRepository
+class Song(
+
+)

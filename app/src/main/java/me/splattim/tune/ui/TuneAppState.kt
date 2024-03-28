@@ -9,6 +9,7 @@ import androidx.navigation.compose.rememberNavController
 
 enum class Screen() {
     Library,
+    Player,
 }
 
 @Composable

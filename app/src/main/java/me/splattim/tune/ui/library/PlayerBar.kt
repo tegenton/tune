@@ -42,8 +42,10 @@ fun PlayerBar(modifier: Modifier = Modifier) {
                Text(" - ")
                Text(stringResource(id = R.string.album))
            }
-           LinearProgressIndicator(0.5f,
-               Modifier.fillMaxWidth())
+           LinearProgressIndicator(
+               progress = { 0.5f },
+               modifier = Modifier.fillMaxWidth(),
+           )
        }
        Icon(
            Icons.Default.PlayArrow,

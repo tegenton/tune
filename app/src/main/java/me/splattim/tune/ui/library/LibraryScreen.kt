@@ -1,32 +1,28 @@
 package me.splattim.tune.ui.library
 
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import me.splattim.tune.R
-import me.splattim.tune.ui.components.ExpandableCard
+import androidx.lifecycle.viewmodel.compose.viewModel
 import me.splattim.tune.ui.theme.TuneTheme
 
 @Composable
-fun LibraryScreen() {
+fun LibraryScreen(libraryViewModel: LibraryViewModel = viewModel()) {
+    val libraryUiState by libraryViewModel.uiState.collectAsState()
     Scaffold(
         topBar = {
-            SearchBar()
+            SearchBar(
+                libraryViewModel.search,
+                { libraryViewModel.updateSearch(it) },
+                { libraryViewModel.runSearch() }
+            )
         },
         content = {
-            LazyVerticalGrid(
-                columns = GridCells.Adaptive(88.dp),
-                modifier = Modifier.padding(it)
-            ) {
-                item {
-                    ExpandableCard(drawable = R.drawable.ic_launcher_foreground, name = R.string.dg)
-                }
-            }
+            LibraryGrid(Modifier.padding(it))
         },
         bottomBar = {
             PlayerBar()
@@ -36,7 +32,7 @@ fun LibraryScreen() {
 
 @Preview(showBackground = true)
 @Composable
-fun LibraryPreview() {
+fun LibraryScreenPreview() {
     TuneTheme {
         LibraryScreen()
     }
