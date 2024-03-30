@@ -33,14 +33,14 @@ fun ExpandableCard(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
     ) {
-        Image(
+        /* TODO Image(
             cardable.image,
             contentDescription = null,
             modifier = Modifier.combinedClickable(
                 onClick = onClick,
                 onLongClick = {focused = true}
             )
-        )
+        )*/
         if (focused)
             Text(cardable.name)
     }
@@ -50,6 +50,6 @@ fun ExpandableCard(
 @Composable
 fun ExpandableCardPreview() {
     TuneTheme() {
-        ExpandableCard(Album(name = "Sample Text", image = painterResource(id = R.drawable.ic_launcher_background)))
+        //TODO ExpandableCard(Album(name = "Sample Text", image = painterResource(id = R.drawable.ic_launcher_background)))
     }
 }

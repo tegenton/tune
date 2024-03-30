@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Tune</string>
+    <string name="placeholder_search">Search</string>
+    <string name="shuffle">Shuffle\n</string>
 </resources>

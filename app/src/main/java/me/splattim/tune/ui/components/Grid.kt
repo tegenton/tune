@@ -33,7 +33,7 @@ fun Grid(
 @Composable
 fun GridPreview() {
     val album = Album(
-        image = painterResource(id = R.drawable.ic_launcher_foreground),
+        image = "Sample Image", // TODO
         name = "Sample Text"
     )
     TuneTheme {
