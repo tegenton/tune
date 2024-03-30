@@ -1,7 +1,6 @@
 package me.splattim.tune.ui.components
 
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
+import android.graphics.drawable.Drawable
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.combinedClickable
@@ -14,17 +13,18 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import me.splattim.tune.R
+import me.splattim.tune.data.Album
+import me.splattim.tune.data.Cardable
 import me.splattim.tune.ui.theme.TuneTheme
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ExpandableCard(
-    @DrawableRes drawable: Int,
-    @StringRes name: Int,
+    cardable: Cardable,
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {}
 ) {
@@ -34,7 +34,7 @@ fun ExpandableCard(
         modifier = modifier
     ) {
         Image(
-            painterResource(id = drawable),
+            cardable.image,
             contentDescription = null,
             modifier = Modifier.combinedClickable(
                 onClick = onClick,
@@ -42,7 +42,7 @@ fun ExpandableCard(
             )
         )
         if (focused)
-            Text(stringResource(name))
+            Text(cardable.name)
     }
 }
 
@@ -50,6 +50,6 @@ fun ExpandableCard(
 @Composable
 fun ExpandableCardPreview() {
     TuneTheme() {
-        ExpandableCard(R.drawable.ic_launcher_background, R.string.album)
+        ExpandableCard(Album(name = "Sample Text", image = painterResource(id = R.drawable.ic_launcher_background)))
     }
 }

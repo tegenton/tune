@@ -1,5 +1,6 @@
 package me.splattim.tune.ui.library
 
+import android.database.MatrixCursor
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -10,7 +11,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
 class LibraryViewModel : ViewModel() {
-    private val _uiState = MutableStateFlow(LibraryUiState())
+    private val _uiState = MutableStateFlow(LibraryUiState(MatrixCursor(arrayOf("Sample Text"), 0)))
     val uiState: StateFlow<LibraryUiState> = _uiState.asStateFlow()
     var search by mutableStateOf("")
         private set

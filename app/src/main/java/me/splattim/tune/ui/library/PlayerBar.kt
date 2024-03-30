@@ -38,9 +38,9 @@ fun PlayerBar(modifier: Modifier = Modifier) {
            modifier = Modifier.weight(1f)
        ) {
            Row {
-               Text(stringResource(id = R.string.dg))
+               Text("Sample Text")
                Text(" - ")
-               Text(stringResource(id = R.string.album))
+               Text("Sample Text")
            }
            LinearProgressIndicator(
                progress = { 0.5f },
