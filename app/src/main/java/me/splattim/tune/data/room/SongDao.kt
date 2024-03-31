@@ -25,4 +25,7 @@ interface SongDao {
 
     @Query("SELECT * from songs where albumId = :albumId")
     fun getAlbum(albumId: Int): Flow<List<Song>>
+
+    @Query("SELECT * from songs")
+    fun getAll(): Flow<List<Song>>
 }

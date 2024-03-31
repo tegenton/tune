@@ -16,5 +16,5 @@ data class Album(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val artistId: Int? = null,
     override val name: String,
-    override val image: String
+    override val image: String? = null
 ) : Cardable

@@ -1,6 +1,5 @@
 package me.splattim.tune.ui.components
 
-import android.graphics.drawable.Drawable
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.combinedClickable
@@ -13,34 +12,39 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import coil.compose.rememberAsyncImagePainter
 import me.splattim.tune.R
 import me.splattim.tune.data.Album
 import me.splattim.tune.data.Cardable
 import me.splattim.tune.ui.theme.TuneTheme
+import java.io.File
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ExpandableCard(
     cardable: Cardable,
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit = {}
+    onClick: (String) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     var focused by remember { mutableStateOf(false)}
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
     ) {
-        /* TODO Image(
-            cardable.image,
+        Image(
+            if (cardable.image != null) {
+                rememberAsyncImagePainter(File(cardable.image))
+            } else {
+                painterResource(id = R.drawable.ic_launcher_background)
+            },
             contentDescription = null,
             modifier = Modifier.combinedClickable(
-                onClick = onClick,
+                onClick = { onClick(cardable.name) },
                 onLongClick = {focused = true}
             )
-        )*/
+        )
         if (focused)
             Text(cardable.name)
     }
@@ -49,7 +53,7 @@ fun ExpandableCard(
 @Preview(showBackground = true)
 @Composable
 fun ExpandableCardPreview() {
-    TuneTheme() {
-        //TODO ExpandableCard(Album(name = "Sample Text", image = painterResource(id = R.drawable.ic_launcher_background)))
+    TuneTheme {
+        ExpandableCard(Album(name = "Sample Text"), {})
     }
 }

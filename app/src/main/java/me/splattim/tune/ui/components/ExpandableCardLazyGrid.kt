@@ -6,25 +6,24 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import me.splattim.tune.R
 import me.splattim.tune.data.Album
 import me.splattim.tune.data.Cardable
 import me.splattim.tune.ui.theme.TuneTheme
 
 @Composable
-fun Grid(
+fun ExpandableCardLazyGrid(
     gridContent: List<Cardable>,
+    onSelect: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyVerticalGrid(
-        columns = GridCells.Adaptive(88.dp),
+        columns = GridCells.Adaptive(88.dp), // TODO
         modifier = modifier.fillMaxSize()
     ) {
         items(gridContent) {
-            ExpandableCard(it)
+            ExpandableCard(it, onSelect)
         }
     }
 }
@@ -33,10 +32,9 @@ fun Grid(
 @Composable
 fun GridPreview() {
     val album = Album(
-        image = "Sample Image", // TODO
         name = "Sample Text"
     )
     TuneTheme {
-        Grid(listOf(album, album ))
+        ExpandableCardLazyGrid(listOf(album, album), {})
     }
 }

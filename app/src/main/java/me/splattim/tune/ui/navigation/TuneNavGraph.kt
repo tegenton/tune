@@ -1,16 +1,15 @@
-package me.splattim.tune.ui
+package me.splattim.tune.ui.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import me.splattim.tune.ui.library.LibraryScreen
 import me.splattim.tune.ui.player.PlayerScreen
-import me.splattim.tune.ui.theme.TuneTheme
 
 @Composable
-fun TuneApp(appState: TuneAppState = rememberTuneAppState()) {
-    NavHost(navController = appState.navController, startDestination = Screen.Library.name) {
+fun TuneNavHost(navController: NavHostController) {
+    NavHost(navController = navController, startDestination = Screen.Library.name) {
         composable(Screen.Library.name) {
             LibraryScreen()
         }
@@ -20,10 +19,7 @@ fun TuneApp(appState: TuneAppState = rememberTuneAppState()) {
     }
 }
 
-@Preview
-@Composable
-private fun AppPreview() {
-    TuneTheme {
-        TuneApp()
-    }
+enum class Screen() {
+    Library,
+    Player,
 }
