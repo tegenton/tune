@@ -22,6 +22,7 @@ import androidx.room.PrimaryKey
 data class Song(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
+    val name: String,
     val artistId: Int? = null,
     val albumId: Int? = null
 )

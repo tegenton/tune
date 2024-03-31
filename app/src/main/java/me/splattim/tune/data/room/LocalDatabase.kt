@@ -9,19 +9,19 @@ import me.splattim.tune.data.Artist
 import me.splattim.tune.data.Song
 
 @Database(entities = [Song::class, Artist::class, Album::class], version = 1, exportSchema = false)
-abstract class SongDatabase : RoomDatabase() {
+abstract class LocalDatabase : RoomDatabase() {
     abstract fun songDao(): SongDao
-    abstract fun artistDau(): ArtistDao
-    abstract fun AlbumDao(): AlbumDao
+    abstract fun artistDao(): ArtistDao
+    abstract fun albumDao(): AlbumDao
 
     companion object {
         @Volatile
-        private var Instance: SongDatabase? = null
-        fun getDatabase(context: Context): SongDatabase {
+        private var Instance: LocalDatabase? = null
+        fun getDatabase(context: Context): LocalDatabase {
             return Instance ?: synchronized(this) {
                 Room.databaseBuilder(
                     context = context,
-                    klass = SongDatabase::class.java,
+                    klass = LocalDatabase::class.java,
                     "song_database"
                 )
                     .fallbackToDestructiveMigration()

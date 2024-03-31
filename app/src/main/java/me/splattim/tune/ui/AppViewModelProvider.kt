@@ -11,7 +11,7 @@ import me.splattim.tune.ui.player.PlayerViewModel
 object AppViewModelProvider {
     val Factory = viewModelFactory {
         initializer {
-            LibraryViewModel(tuneApplication().container.songRepository)
+            LibraryViewModel(tuneApplication().container)
         }
         initializer {
             PlayerViewModel()

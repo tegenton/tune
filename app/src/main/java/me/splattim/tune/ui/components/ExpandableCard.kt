@@ -25,7 +25,7 @@ import java.io.File
 @Composable
 fun ExpandableCard(
     cardable: Cardable,
-    onClick: (String) -> Unit,
+    onClick: (Cardable) -> Unit,
     modifier: Modifier = Modifier
 ) {
     var focused by remember { mutableStateOf(false)}
@@ -41,7 +41,7 @@ fun ExpandableCard(
             },
             contentDescription = null,
             modifier = Modifier.combinedClickable(
-                onClick = { onClick(cardable.name) },
+                onClick = { onClick(cardable) },
                 onLongClick = {focused = true}
             )
         )

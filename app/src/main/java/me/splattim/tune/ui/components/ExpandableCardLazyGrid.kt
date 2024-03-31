@@ -15,7 +15,7 @@ import me.splattim.tune.ui.theme.TuneTheme
 @Composable
 fun ExpandableCardLazyGrid(
     gridContent: List<Cardable>,
-    onSelect: (String) -> Unit,
+    onSelect: (Cardable) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyVerticalGrid(

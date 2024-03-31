@@ -26,6 +26,13 @@ interface SongDao {
     @Query("SELECT * from songs where albumId = :albumId")
     fun getAlbum(albumId: Int): Flow<List<Song>>
 
+    @Query("SELECT * from songs where name LIKE :name")
+    fun find(name: String): Flow<List<Song>>
+    @Query("SELECT * from songs where artistId = :artistId AND name LIKE :name")
+    fun findArtist(artistId: Int, name: String): Flow<List<Song>>
+    @Query("SELECT * from songs where albumId = :albumId AND name LIKE :name")
+    fun findAlbum(albumId: Int, name: String): Flow<List<Song>>
+
     @Query("SELECT * from songs")
     fun getAll(): Flow<List<Song>>
 }
